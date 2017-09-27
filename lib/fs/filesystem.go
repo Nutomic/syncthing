@@ -120,6 +120,8 @@ func NewFilesystem(fsType FilesystemType, uri string) Filesystem {
 	switch fsType {
 	case FilesystemTypeBasic:
 		fs = NewWalkFilesystem(newBasicFilesystem(uri))
+	case FilesystemTypeAndroid:
+		fs = NewWalkFilesystem(newAndroidFilesystem(uri))
 	default:
 		l.Debugln("Unknown filesystem", fsType, uri)
 		fs = &errorFilesystem{
